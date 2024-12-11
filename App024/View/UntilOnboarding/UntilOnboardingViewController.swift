@@ -84,7 +84,7 @@ extension UntilOnboardingViewController {
 
     @objc private func updateActivityIndicator() {
         activityCount += 1
-        if activityCount >= 3 {
+        if activityCount >= 2 {
             timer?.invalidate()
             activityIndicator.stopAnimating()
             goToNextPage()
@@ -95,8 +95,7 @@ extension UntilOnboardingViewController {
         guard let navigationController = self.navigationController else { return }
         guard var viewModel = self.viewModel else { return }
         if viewModel.appStorageService.hasData(for: .skipOnboarding) {
-            UntilOnboardingRouter.showOnboardingViewController(in: navigationController)
-            //showTabBar
+            UntilOnboardingRouter.showTabBarViewController(in: navigationController)
         } else {
             viewModel.skipOnboarding = true
             UntilOnboardingRouter.showOnboardingViewController(in: navigationController)

@@ -54,6 +54,18 @@
 		CC589E662D08B701000D9F0A /* PaymentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC589E652D08B701000D9F0A /* PaymentButton.swift */; };
 		CC589E692D09C71C000D9F0A /* IconLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC589E682D09C71C000D9F0A /* IconLabelView.swift */; };
 		CC589E6C2D09D32E000D9F0A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC589E6B2D09D32E000D9F0A /* TabBarViewController.swift */; };
+		CC589E722D09D4F6000D9F0A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC589E712D09D4F6000D9F0A /* HomeViewController.swift */; };
+		CC589E742D09D4FD000D9F0A /* HomeAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC589E732D09D4FD000D9F0A /* HomeAssembly.swift */; };
+		CC589E762D09D503000D9F0A /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC589E752D09D503000D9F0A /* HomeRouter.swift */; };
+		CC589E782D09D539000D9F0A /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC589E772D09D539000D9F0A /* CollectionViewController.swift */; };
+		CC589E7A2D09D541000D9F0A /* CollectionAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC589E792D09D541000D9F0A /* CollectionAssembly.swift */; };
+		CC589E7C2D09D547000D9F0A /* CollectionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC589E7B2D09D547000D9F0A /* CollectionRouter.swift */; };
+		CC589E7E2D09D553000D9F0A /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC589E7D2D09D553000D9F0A /* HistoryViewController.swift */; };
+		CC589E802D09D55D000D9F0A /* HistoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC589E7F2D09D55D000D9F0A /* HistoryAssembly.swift */; };
+		CC589E822D09D568000D9F0A /* HistoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC589E812D09D568000D9F0A /* HistoryRouter.swift */; };
+		CC589E842D09D571000D9F0A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC589E832D09D571000D9F0A /* SettingsViewController.swift */; };
+		CC589E862D09D577000D9F0A /* SettingsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC589E852D09D577000D9F0A /* SettingsAssembly.swift */; };
+		CC589E882D09D580000D9F0A /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC589E872D09D580000D9F0A /* SettingsRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +112,18 @@
 		CC589E652D08B701000D9F0A /* PaymentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentButton.swift; sourceTree = "<group>"; };
 		CC589E682D09C71C000D9F0A /* IconLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconLabelView.swift; sourceTree = "<group>"; };
 		CC589E6B2D09D32E000D9F0A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		CC589E712D09D4F6000D9F0A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		CC589E732D09D4FD000D9F0A /* HomeAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAssembly.swift; sourceTree = "<group>"; };
+		CC589E752D09D503000D9F0A /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		CC589E772D09D539000D9F0A /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		CC589E792D09D541000D9F0A /* CollectionAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionAssembly.swift; sourceTree = "<group>"; };
+		CC589E7B2D09D547000D9F0A /* CollectionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionRouter.swift; sourceTree = "<group>"; };
+		CC589E7D2D09D553000D9F0A /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		CC589E7F2D09D55D000D9F0A /* HistoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAssembly.swift; sourceTree = "<group>"; };
+		CC589E812D09D568000D9F0A /* HistoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRouter.swift; sourceTree = "<group>"; };
+		CC589E832D09D571000D9F0A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CC589E852D09D577000D9F0A /* SettingsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAssembly.swift; sourceTree = "<group>"; };
+		CC589E872D09D580000D9F0A /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +211,10 @@
 		CC589E192D0872D5000D9F0A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CC589E702D09D4EB000D9F0A /* Settings */,
+				CC589E6F2D09D4E6000D9F0A /* History */,
+				CC589E6E2D09D4E0000D9F0A /* Collection */,
+				CC589E6D2D09D4DC000D9F0A /* Home */,
 				CC589E6A2D09D323000D9F0A /* TabBar */,
 				CC589E5D2D08B087000D9F0A /* Payment */,
 				CC589E4C2D08889F000D9F0A /* Onboarding */,
@@ -322,6 +350,46 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		CC589E6D2D09D4DC000D9F0A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CC589E712D09D4F6000D9F0A /* HomeViewController.swift */,
+				CC589E732D09D4FD000D9F0A /* HomeAssembly.swift */,
+				CC589E752D09D503000D9F0A /* HomeRouter.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		CC589E6E2D09D4E0000D9F0A /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				CC589E772D09D539000D9F0A /* CollectionViewController.swift */,
+				CC589E792D09D541000D9F0A /* CollectionAssembly.swift */,
+				CC589E7B2D09D547000D9F0A /* CollectionRouter.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		CC589E6F2D09D4E6000D9F0A /* History */ = {
+			isa = PBXGroup;
+			children = (
+				CC589E7D2D09D553000D9F0A /* HistoryViewController.swift */,
+				CC589E7F2D09D55D000D9F0A /* HistoryAssembly.swift */,
+				CC589E812D09D568000D9F0A /* HistoryRouter.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		CC589E702D09D4EB000D9F0A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CC589E832D09D571000D9F0A /* SettingsViewController.swift */,
+				CC589E852D09D577000D9F0A /* SettingsAssembly.swift */,
+				CC589E872D09D580000D9F0A /* SettingsRouter.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -414,14 +482,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC589E782D09D539000D9F0A /* CollectionViewController.swift in Sources */,
 				CC589E6C2D09D32E000D9F0A /* TabBarViewController.swift in Sources */,
 				CC589E222D087319000D9F0A /* ReusableVIew.swift in Sources */,
 				CC589E372D087460000D9F0A /* UIColor.swift in Sources */,
 				CC589E412D08747E000D9F0A /* Int.swift in Sources */,
 				CC589E332D087453000D9F0A /* TableView.swift in Sources */,
 				CC589E302D087436000D9F0A /* UntilOnboardingAssembly.swift in Sources */,
+				CC589E742D09D4FD000D9F0A /* HomeAssembly.swift in Sources */,
 				CC589E242D087321000D9F0A /* BaseRouter.swift in Sources */,
 				CC589E2E2D08742C000D9F0A /* UntilOnboardingViewController.swift in Sources */,
+				CC589E762D09D503000D9F0A /* HomeRouter.swift in Sources */,
 				CC589E4E2D0888AC000D9F0A /* OnboardingViewController.swift in Sources */,
 				CC589E3B2D08746C000D9F0A /* UILabel.swift in Sources */,
 				CC589E552D088CDE000D9F0A /* OnboardingCell.swift in Sources */,
@@ -433,18 +504,27 @@
 				CC589E272D087365000D9F0A /* ServiceAssembly.swift in Sources */,
 				CC589E632D08B0A6000D9F0A /* PaymentRouter.swift in Sources */,
 				CC589E5F2D08B097000D9F0A /* PaymentViewController.swift in Sources */,
+				CC589E822D09D568000D9F0A /* HistoryRouter.swift in Sources */,
+				CC589E842D09D571000D9F0A /* SettingsViewController.swift in Sources */,
 				CC589E202D08730F000D9F0A /* BaseViewController.swift in Sources */,
 				CC589E582D088D18000D9F0A /* AdvancedPageControl.swift in Sources */,
 				CC589E392D087466000D9F0A /* UIDevice.swift in Sources */,
 				CC589E3F2D087478000D9F0A /* String.swift in Sources */,
+				CC589E862D09D577000D9F0A /* SettingsAssembly.swift in Sources */,
+				CC589E802D09D55D000D9F0A /* HistoryAssembly.swift in Sources */,
 				CC589E2C2D08740E000D9F0A /* UntilOnboardingRouter.swift in Sources */,
 				CC589E612D08B09F000D9F0A /* PaymentAssembly.swift in Sources */,
 				CC589E662D08B701000D9F0A /* PaymentButton.swift in Sources */,
 				CC589E3D2D087473000D9F0A /* StackView.swift in Sources */,
+				CC589E7E2D09D553000D9F0A /* HistoryViewController.swift in Sources */,
 				CC589E5C2D088D26000D9F0A /* Drawer.swift in Sources */,
 				CC589E292D087371000D9F0A /* ViewControllerFactory.swift in Sources */,
+				CC589E882D09D580000D9F0A /* SettingsRouter.swift in Sources */,
+				CC589E722D09D4F6000D9F0A /* HomeViewController.swift in Sources */,
 				CC589DE62D0853DA000D9F0A /* SceneDelegate.swift in Sources */,
+				CC589E7C2D09D547000D9F0A /* CollectionRouter.swift in Sources */,
 				CC589E692D09C71C000D9F0A /* IconLabelView.swift in Sources */,
+				CC589E7A2D09D541000D9F0A /* CollectionAssembly.swift in Sources */,
 				CC589E1E2D087300000D9F0A /* Setupable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

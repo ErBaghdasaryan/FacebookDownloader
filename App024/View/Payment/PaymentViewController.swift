@@ -234,7 +234,7 @@ extension PaymentViewController {
     }
 
     @objc func continueButtonTaped() {
-//        if let navigationController = self.navigationController {
+        if let navigationController = self.navigationController {
 ////            guard let currentProduct = self.currentProduct else { return }
 //
 //            startPurchase(product: currentProduct) { result in
@@ -244,13 +244,14 @@ extension PaymentViewController {
 //                    let previousViewController = viewControllers[currentIndex - 1]
 //
 //                    if previousViewController is OnboardingViewController {
-//                        UntilOnboardingRouter.showTabBarViewController(in: navigationController)
+//                        PaymentRouter.showTabBarViewController(in: navigationController)
 //                    } else {
-//                        UntilOnboardingRouter.popViewController(in: navigationController)
+//                        PaymentRouter.popViewController(in: navigationController)
 //                    }
 //                }
 //            }
-//        }
+            PaymentRouter.showTabBarViewController(in: navigationController)
+        }
 
     }
 }

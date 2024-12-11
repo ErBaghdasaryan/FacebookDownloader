@@ -1,5 +1,5 @@
 //
-//  HistoryViewController.swift
+//  HomeViewController.swift
 //  App024
 //
 //  Created by Er Baghdasaryan on 11.12.24.
@@ -9,11 +9,11 @@ import UIKit
 import AppViewModel
 import SnapKit
 
-final class HistoryViewController: BaseViewController {
+final class HomeViewController: BaseViewController {
 
     var viewModel: ViewModel?
 
-    private let header = UILabel(text: "History",
+    private let header = UILabel(text: "Home",
                                  textColor: .black,
                                  font: UIFont(name: "SFProText-Black", size: 28))
 
@@ -51,7 +51,7 @@ final class HistoryViewController: BaseViewController {
 }
 
 //MARK: Make buttons actions
-extension HistoryViewController {
+extension HomeViewController {
     
     private func makeButtonsAction() {
         
@@ -65,46 +65,46 @@ extension HistoryViewController {
             action: #selector(openPayment)
         )
 
-        let deleteButton = UIBarButtonItem(
-            image: UIImage(named: "deleteBlack"),
+        let instructionButton = UIBarButtonItem(
+            image: UIImage(named: "instruction"),
             style: .plain,
             target: self,
-            action: #selector(deleteHistory)
+            action: #selector(openInstruction)
         )
 
-        navigationItem.rightBarButtonItems = [deleteButton, paymentButton]
+        navigationItem.rightBarButtonItems = [instructionButton, paymentButton]
     }
 
     @objc private func openPayment() {
         print("First button tapped")
     }
 
-    @objc private func deleteHistory() {
+    @objc private func openInstruction() {
         print("Second button tapped")
     }
 }
 
-extension HistoryViewController: IViewModelableController {
-    typealias ViewModel = IHistoryViewModel
+extension HomeViewController: IViewModelableController {
+    typealias ViewModel = IHomeViewModel
 }
 
 //MARK: Preview
 import SwiftUI
 
-struct HistoryViewControllerProvider: PreviewProvider {
+struct HomeViewControllerProvider: PreviewProvider {
 
     static var previews: some View {
         ContainerView().edgesIgnoringSafeArea(.all)
     }
 
     struct ContainerView: UIViewControllerRepresentable {
-        let historyViewController = HistoryViewController()
+        let homeViewController = HomeViewController()
 
-        func makeUIViewController(context: UIViewControllerRepresentableContext<HistoryViewControllerProvider.ContainerView>) -> HistoryViewController {
-            return historyViewController
+        func makeUIViewController(context: UIViewControllerRepresentableContext<HomeViewControllerProvider.ContainerView>) -> HomeViewController {
+            return homeViewController
         }
 
-        func updateUIViewController(_ uiViewController: HistoryViewControllerProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<HistoryViewControllerProvider.ContainerView>) {
+        func updateUIViewController(_ uiViewController: HomeViewControllerProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<HomeViewControllerProvider.ContainerView>) {
         }
     }
 }
