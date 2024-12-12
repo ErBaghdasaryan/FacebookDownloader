@@ -76,7 +76,9 @@ extension HistoryViewController {
     }
 
     @objc private func openPayment() {
-        print("First button tapped")
+        guard let navigationController = self.navigationController else { return }
+
+        HistoryRouter.showPaymentViewController(in: navigationController)
     }
 
     @objc private func deleteHistory() {

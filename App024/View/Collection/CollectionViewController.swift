@@ -76,7 +76,9 @@ extension CollectionViewController {
     }
 
     @objc private func openPayment() {
-        print("First button tapped")
+        guard let navigationController = self.navigationController else { return }
+
+        CollectionRouter.showPaymentViewController(in: navigationController)
     }
 
     @objc private func addCollection() {

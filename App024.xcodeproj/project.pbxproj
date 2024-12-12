@@ -66,6 +66,10 @@
 		CC589E842D09D571000D9F0A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC589E832D09D571000D9F0A /* SettingsViewController.swift */; };
 		CC589E862D09D577000D9F0A /* SettingsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC589E852D09D577000D9F0A /* SettingsAssembly.swift */; };
 		CC589E882D09D580000D9F0A /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC589E872D09D580000D9F0A /* SettingsRouter.swift */; };
+		CC68B2E92D0AEA5000A1627F /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC68B2E82D0AEA5000A1627F /* InstructionViewController.swift */; };
+		CC68B2EB2D0AEA5900A1627F /* InstructionAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC68B2EA2D0AEA5900A1627F /* InstructionAssembly.swift */; };
+		CC68B2EE2D0B17D900A1627F /* InstructionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC68B2ED2D0B17D900A1627F /* InstructionCell.swift */; };
+		CC68B2F12D0B790B00A1627F /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC68B2F02D0B790B00A1627F /* SectionHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +128,10 @@
 		CC589E832D09D571000D9F0A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CC589E852D09D577000D9F0A /* SettingsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAssembly.swift; sourceTree = "<group>"; };
 		CC589E872D09D580000D9F0A /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
+		CC68B2E82D0AEA5000A1627F /* InstructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
+		CC68B2EA2D0AEA5900A1627F /* InstructionAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionAssembly.swift; sourceTree = "<group>"; };
+		CC68B2ED2D0B17D900A1627F /* InstructionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCell.swift; sourceTree = "<group>"; };
+		CC68B2F02D0B790B00A1627F /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +219,7 @@
 		CC589E192D0872D5000D9F0A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CC68B2E72D0AEA3E00A1627F /* Instrution */,
 				CC589E702D09D4EB000D9F0A /* Settings */,
 				CC589E6F2D09D4E6000D9F0A /* History */,
 				CC589E6E2D09D4E0000D9F0A /* Collection */,
@@ -383,11 +392,38 @@
 		CC589E702D09D4EB000D9F0A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				CC68B2EF2D0B790100A1627F /* Cell */,
 				CC589E832D09D571000D9F0A /* SettingsViewController.swift */,
 				CC589E852D09D577000D9F0A /* SettingsAssembly.swift */,
 				CC589E872D09D580000D9F0A /* SettingsRouter.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		CC68B2E72D0AEA3E00A1627F /* Instrution */ = {
+			isa = PBXGroup;
+			children = (
+				CC68B2EC2D0B17D100A1627F /* Cell */,
+				CC68B2E82D0AEA5000A1627F /* InstructionViewController.swift */,
+				CC68B2EA2D0AEA5900A1627F /* InstructionAssembly.swift */,
+			);
+			path = Instrution;
+			sourceTree = "<group>";
+		};
+		CC68B2EC2D0B17D100A1627F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CC68B2ED2D0B17D900A1627F /* InstructionCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		CC68B2EF2D0B790100A1627F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CC68B2F02D0B790B00A1627F /* SectionHeaderView.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -503,6 +539,7 @@
 				CC589DE42D0853DA000D9F0A /* AppDelegate.swift in Sources */,
 				CC589E272D087365000D9F0A /* ServiceAssembly.swift in Sources */,
 				CC589E632D08B0A6000D9F0A /* PaymentRouter.swift in Sources */,
+				CC68B2EE2D0B17D900A1627F /* InstructionCell.swift in Sources */,
 				CC589E5F2D08B097000D9F0A /* PaymentViewController.swift in Sources */,
 				CC589E822D09D568000D9F0A /* HistoryRouter.swift in Sources */,
 				CC589E842D09D571000D9F0A /* SettingsViewController.swift in Sources */,
@@ -512,6 +549,7 @@
 				CC589E3F2D087478000D9F0A /* String.swift in Sources */,
 				CC589E862D09D577000D9F0A /* SettingsAssembly.swift in Sources */,
 				CC589E802D09D55D000D9F0A /* HistoryAssembly.swift in Sources */,
+				CC68B2E92D0AEA5000A1627F /* InstructionViewController.swift in Sources */,
 				CC589E2C2D08740E000D9F0A /* UntilOnboardingRouter.swift in Sources */,
 				CC589E612D08B09F000D9F0A /* PaymentAssembly.swift in Sources */,
 				CC589E662D08B701000D9F0A /* PaymentButton.swift in Sources */,
@@ -519,9 +557,11 @@
 				CC589E7E2D09D553000D9F0A /* HistoryViewController.swift in Sources */,
 				CC589E5C2D088D26000D9F0A /* Drawer.swift in Sources */,
 				CC589E292D087371000D9F0A /* ViewControllerFactory.swift in Sources */,
+				CC68B2EB2D0AEA5900A1627F /* InstructionAssembly.swift in Sources */,
 				CC589E882D09D580000D9F0A /* SettingsRouter.swift in Sources */,
 				CC589E722D09D4F6000D9F0A /* HomeViewController.swift in Sources */,
 				CC589DE62D0853DA000D9F0A /* SceneDelegate.swift in Sources */,
+				CC68B2F12D0B790B00A1627F /* SectionHeaderView.swift in Sources */,
 				CC589E7C2D09D547000D9F0A /* CollectionRouter.swift in Sources */,
 				CC589E692D09C71C000D9F0A /* IconLabelView.swift in Sources */,
 				CC589E7A2D09D541000D9F0A /* CollectionAssembly.swift in Sources */,

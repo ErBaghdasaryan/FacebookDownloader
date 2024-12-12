@@ -76,11 +76,15 @@ extension HomeViewController {
     }
 
     @objc private func openPayment() {
-        print("First button tapped")
+        guard let navigationController = self.navigationController else { return }
+
+        HomeRouter.showPaymentViewController(in: navigationController)
     }
 
     @objc private func openInstruction() {
-        print("Second button tapped")
+        guard let navigationController = self.navigationController else { return }
+
+        HomeRouter.showInstructionViewController(in: navigationController)
     }
 }
 

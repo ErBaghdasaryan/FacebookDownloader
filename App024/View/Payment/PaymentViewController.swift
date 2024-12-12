@@ -227,6 +227,8 @@ extension PaymentViewController {
                 if previousViewController is OnboardingViewController {
                     UntilOnboardingRouter.showTabBarViewController(in: navigationController)
                 } else {
+                    navigationController.navigationBar.isHidden = false
+                    navigationController.navigationItem.hidesBackButton = false
                     UntilOnboardingRouter.popViewController(in: navigationController)
                 }
             }

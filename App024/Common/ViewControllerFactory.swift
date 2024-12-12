@@ -51,6 +51,14 @@ final class ViewControllerFactory {
         return viewController
     }
 
+    //MARK: Instruction
+    static func makeInstructionViewController() -> InstructionViewController {
+        let assembler = Assembler(commonAssemblies + [InstructionAssembly()])
+        let viewController = InstructionViewController()
+        viewController.viewModel = assembler.resolver.resolve(IInstructionViewModel.self)
+        return viewController
+    }
+
     //MARK: Collection
     static func makeCollectionViewController() -> CollectionViewController {
         let assembler = Assembler(commonAssemblies + [CollectionAssembly()])
