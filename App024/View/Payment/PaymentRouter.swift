@@ -17,19 +17,19 @@ final class PaymentRouter: BaseRouter {
         navigationController.pushViewController(viewController, animated: true)
     }
 
-    static func showUsageViewController(in navigationController: UINavigationController) {
-//        let viewController = ViewControllerFactory.makeUsageViewController()
-//        viewController.navigationItem.hidesBackButton = false
-//        navigationController.navigationBar.isHidden = false
-//        viewController.hidesBottomBarWhenPushed = true
-//        navigationController.pushViewController(viewController, animated: false)
+    static func showPrivacyViewController(in navigationController: UINavigationController) {
+        let viewController = ViewControllerFactory.makePrivacyViewController()
+        viewController.navigationItem.hidesBackButton = false
+        navigationController.navigationBar.isHidden = false
+        viewController.hidesBottomBarWhenPushed = true
+        navigationController.pushViewController(viewController, animated: false)
     }
 
     static func showTermsViewController(in navigationController: UINavigationController) {
-//        let viewController = ViewControllerFactory.makeTermsViewController()
-//        viewController.navigationItem.hidesBackButton = false
-//        navigationController.navigationBar.isHidden = false
-//        viewController.hidesBottomBarWhenPushed = true
-//        navigationController.pushViewController(viewController, animated: false)
+        let viewController = ViewControllerFactory.makeTermsViewController()
+        viewController.navigationItem.hidesBackButton = false
+        navigationController.navigationBar.isHidden = false
+        viewController.hidesBottomBarWhenPushed = true
+        navigationController.pushViewController(viewController, animated: false)
     }
 }

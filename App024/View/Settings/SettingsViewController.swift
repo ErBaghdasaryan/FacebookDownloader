@@ -8,6 +8,9 @@
 import UIKit
 import AppViewModel
 import SnapKit
+import StoreKit
+import Toast
+import ApphudSDK
 
 final class SettingsViewController: BaseViewController {
 
@@ -18,6 +21,7 @@ final class SettingsViewController: BaseViewController {
                                  font: UIFont(name: "SFProText-Black", size: 28))
 
     private let tableView = UITableView(frame: .zero, style: .grouped)
+    private var style = ToastStyle()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +39,9 @@ final class SettingsViewController: BaseViewController {
         self.tableView.backgroundColor = .clear
         self.tableView.separatorStyle = .none
         self.tableView.allowsSelection = true
+
+        self.style.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        self.style.messageColor = UIColor.white
 
         self.view.addSubview(header)
         self.view.addSubview(tableView)
@@ -85,6 +92,144 @@ extension SettingsViewController {
         
     }
 
+    private func tappedCell(from index: Int) {
+        guard let navigationController = self.navigationController else { return }
+        switch index {
+        case 0:
+            SettingsRouter.showPaymentViewController(in: navigationController)
+        case 1:
+            self.restorePurchase { result in
+                self.view.makeToast("Restore completed", duration: 2.0, position: .bottom, style: self.style)
+            }
+        case 2:
+            showClearCacheAlert()
+        case 3:
+            self.rateTapped()
+        case 4:
+            self.shareTapped()
+        case 5:
+            SettingsRouter.showContuctUsViewController(in: navigationController)
+        case 6:
+            SettingsRouter.showPrivacyViewController(in: navigationController)
+        case 7:
+            SettingsRouter.showTermsViewController(in: navigationController)
+        default:
+            break
+        }
+
+    }
+
+    @MainActor
+    func restorePurchase(escaping: @escaping(Bool) -> Void) {
+        Apphud.restorePurchases { subscriptions, _, error in
+            if let error = error {
+                print(error.localizedDescription)
+                escaping(false)
+            }
+            if subscriptions?.first?.isActive() ?? false {
+                escaping(true)
+            }
+            if Apphud.hasActiveSubscription() {
+                escaping(true)
+            }
+        }
+    }
+
+    private func showClearCacheAlert() {
+        let alertController = UIAlertController(
+            title: "Clear cache?",
+            message: "The cached files of your videos will be deleted from your phone's memory. But your download history will be retained.",
+            preferredStyle: .alert
+        )
+
+        let clearAction = UIAlertAction(title: "Clear", style: .destructive) { _ in
+            self.clearAppCache()
+            self.clearTemporaryFiles()
+        }
+        alertController.addAction(clearAction)
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+
+        self.present(alertController, animated: true, completion: nil)
+    }
+
+    private func clearAppCache() {
+        let cacheURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first
+        do {
+            let cacheFiles = try FileManager.default.contentsOfDirectory(atPath: cacheURL?.path ?? "")
+            for file in cacheFiles {
+                let fileURL = cacheURL?.appendingPathComponent(file)
+                try FileManager.default.removeItem(at: fileURL!)
+            }
+            self.view.makeToast("Cache cleared successfully", duration: 2.0, position: .bottom, style: style)
+        } catch {
+            self.view.makeToast("Failed to clear cache", duration: 2.0, position: .bottom, style: style)
+        }
+    }
+
+    private func clearTemporaryFiles() {
+        let tempDir = NSTemporaryDirectory()
+
+        do {
+            let tempFiles = try FileManager.default.contentsOfDirectory(atPath: tempDir)
+            for file in tempFiles {
+                let filePath = tempDir + file
+                try FileManager.default.removeItem(atPath: filePath)
+            }
+            self.view.makeToast("Cache cleared successfully", duration: 2.0, position: .bottom, style: style)
+        } catch {
+            self.view.makeToast("Failed to clear temporary files", duration: 2.0, position: .bottom, style: style)
+        }
+    }
+
+    @objc func shareTapped() {
+        let appStoreURL = URL(string: "https://apps.apple.com/us/app/id6739563851")!
+
+        let activityViewController = UIActivityViewController(activityItems: [appStoreURL], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+
+        activityViewController.excludedActivityTypes = [
+            .postToWeibo,
+            .print,
+            .assignToContact,
+            .saveToCameraRoll,
+            .addToReadingList,
+            .postToFlickr,
+            .postToVimeo,
+            .postToTencentWeibo,
+            .openInIBooks,
+            .markupAsPDF,
+            .mail,
+            .airDrop,
+            .postToFacebook,
+            .postToTwitter,
+            .copyToPasteboard
+        ]
+
+        present(activityViewController, animated: true, completion: nil)
+    }
+
+    @objc func rateTapped() {
+        guard let scene = view.window?.windowScene else { return }
+        if #available(iOS 14.0, *) {
+            SKStoreReviewController.requestReview()
+        } else {
+            let alertController = UIAlertController(
+                title: "Enjoying the app?",
+                message: "Please consider leaving us a review in the App Store!",
+                preferredStyle: .alert
+            )
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            alertController.addAction(UIAlertAction(title: "Go to App Store", style: .default) { _ in
+                if let appStoreURL = URL(string: "https://apps.apple.com/us/app/id6739563851") {
+                    UIApplication.shared.open(appStoreURL, options: [:], completionHandler: nil)
+                }
+            })
+            present(alertController, animated: true, completion: nil)
+        }
+    }
+
     private func setupNavigationBar() {
         let paymentButton = UIBarButtonItem(
             image: UIImage(named: "proIcon"),
@@ -101,6 +246,18 @@ extension SettingsViewController {
 
         SettingsRouter.showPaymentViewController(in: navigationController)
     }
+
+    private func calculateOverallIndex(for indexPath: IndexPath) -> Int {
+        var overallIndex = 0
+
+        for section in 0..<indexPath.section {
+            overallIndex += viewModel?.settingsItems[section].items.count ?? 0
+        }
+
+        overallIndex += indexPath.row
+
+        return overallIndex
+    }
 }
 
 extension SettingsViewController: IViewModelableController {
@@ -115,7 +272,9 @@ extension SettingsViewController:  UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.settingsItems[section].items.count ?? 0
+        let rows = viewModel?.settingsItems[section].items.count ?? 0
+        let isLastSection = section == (viewModel?.settingsItems.count ?? 1) - 1
+        return isLastSection ? rows + 1 : rows
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -129,17 +288,41 @@ extension SettingsViewController:  UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        if let item = self.viewModel?.settingsItems[indexPath.section].items[indexPath.row] {
-            cell.textLabel?.text = item.title
-            cell.imageView?.image = item.icon
-            cell.accessoryType = item.accessoryType
+        let isLastSection = indexPath.section == (viewModel?.settingsItems.count ?? 1) - 1
+            let lastRowIndex = (viewModel?.settingsItems[indexPath.section].items.count ?? 0)
+        if isLastSection && indexPath.row == lastRowIndex {
+            let cell = UITableViewCell()
+            cell.selectionStyle = .none
+            cell.textLabel?.text = "App version: 1.0.0"
+            cell.textLabel?.textAlignment = .center
+            cell.textLabel?.textColor = .darkGray
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            if let item = self.viewModel?.settingsItems[indexPath.section].items[indexPath.row] {
+                cell.textLabel?.text = item.title
+                cell.imageView?.image = item.icon
+                cell.accessoryType = item.accessoryType
+                cell.selectionStyle = .none
+            }
+            return cell
         }
-        return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let isLastSection = indexPath.section == (viewModel?.settingsItems.count ?? 1) - 1
+        let lastRowIndex = (viewModel?.settingsItems[indexPath.section].items.count ?? 0)
+
+        if isLastSection && indexPath.row == lastRowIndex {
+            return
+        } else {
+            let overallIndex = calculateOverallIndex(for: indexPath)
+            self.tappedCell(from: overallIndex)
+        }
     }
 }
 

@@ -26,9 +26,6 @@ public class SettingsService: ISettingsService {
                              accessoryType: .disclosureIndicator),
             ]),
             SettingsSection(title: "Actions", items: [
-                SettingsItem(title: "Upgrade plan",
-                             icon: UIImage(named: "upgradePlan"),
-                             accessoryType: .none),
                 SettingsItem(title: "Clear cache",
                              icon: UIImage(named: "clearCache"),
                              accessoryType: .disclosureIndicator),

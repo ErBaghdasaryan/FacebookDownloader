@@ -6,15 +6,30 @@
 //
 
 import UIKit
+import ApphudSDK
+import AppTrackingTransparency
+import AdSupport
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        Apphud.start(apiKey: "app_y3STNSycWwAmUtM1nLEs8nbL2SRkAy")
+        Apphud.setDeviceIdentifiers(idfa: nil, idfv: UIDevice.current.identifierForVendor?.uuidString)
+        fetchIDFA()
         return true
+    }
+
+    func fetchIDFA() {
+        if #available(iOS 14.5, *) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                ATTrackingManager.requestTrackingAuthorization { status in
+                    guard status == .authorized else { return }
+                    let idfa = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+                    Apphud.setDeviceIdentifiers(idfa: idfa, idfv: UIDevice.current.identifierForVendor?.uuidString)
+                }
+            }
+        }
     }
 
     // MARK: UISceneSession Lifecycle

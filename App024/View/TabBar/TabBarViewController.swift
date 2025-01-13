@@ -32,6 +32,12 @@ class TabBarViewController: UITabBarController {
 
         self.setViewControllers([homeViewController, collectionViewController, historyViewController, settingsPageViewController], animated: true)
         NotificationCenter.default.addObserver(self, selector: #selector(setCurrentPageToTeam), name: Notification.Name("ResetCompleted"), object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(setCurrentPageToTeam),
+            name: NSNotification.Name("UpdateDataNotification"),
+            object: nil
+        )
 
         homeViewController.delegate = self
         collectionViewController.delegate = self
@@ -40,7 +46,7 @@ class TabBarViewController: UITabBarController {
     }
 
     @objc func setCurrentPageToTeam() {
-        self.selectedIndex = 0
+        self.selectedIndex = 2
     }
 
     private func createNavigation(title: String, image: String, vc: UIViewController) -> UINavigationController {

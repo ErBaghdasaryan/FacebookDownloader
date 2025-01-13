@@ -82,4 +82,38 @@ final class ViewControllerFactory {
         viewController.viewModel = assembler.resolver.resolve(ISettingsViewModel.self)
         return viewController
     }
+
+    //MARK: PrivacyPolicy
+    static func makePrivacyViewController() -> PrivacyViewController {
+        let viewController = PrivacyViewController()
+        return viewController
+    }
+
+    //MARK: Terms
+    static func makeTermsViewController() -> TermsViewController {
+        let viewController = TermsViewController()
+        return viewController
+    }
+
+    //MARK: ContuctUs
+    static func makeContuctUsViewController() -> ContuctUsViewController {
+        let viewController = ContuctUsViewController()
+        return viewController
+    }
+
+    //MARK: Profile
+    static func makeProfileViewController(navigationModel: ProfileNavigationModel) -> ProfileViewController {
+        let assembler = Assembler(commonAssemblies + [ProfileAssembly()])
+        let viewController = ProfileViewController()
+        viewController.viewModel = assembler.resolver.resolve(IProfileViewModel.self, argument: navigationModel)
+        return viewController
+    }
+
+    //MARK: Post
+    static func makePostViewController(navigationModel: PostNavigationModel) -> PostViewController {
+        let assembler = Assembler(commonAssemblies + [PostAssembly()])
+        let viewController = PostViewController()
+        viewController.viewModel = assembler.resolver.resolve(IPostViewModel.self, argument: navigationModel)
+        return viewController
+    }
 }

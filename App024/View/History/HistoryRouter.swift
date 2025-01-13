@@ -8,12 +8,21 @@
 import Foundation
 import UIKit
 import AppViewModel
+import AppModel
 
 final class HistoryRouter: BaseRouter {
     static func showPaymentViewController(in navigationController: UINavigationController) {
         let viewController = ViewControllerFactory.makePaymentViewController()
         viewController.navigationItem.hidesBackButton = true
         navigationController.navigationBar.isHidden = true
+        viewController.hidesBottomBarWhenPushed = true
+        navigationController.pushViewController(viewController, animated: true)
+    }
+
+    static func showPostViewController(in navigationController: UINavigationController, navigationModel: PostNavigationModel) {
+        let viewController = ViewControllerFactory.makePostViewController(navigationModel: navigationModel)
+        viewController.navigationItem.hidesBackButton = false
+        navigationController.navigationBar.isHidden = false
         viewController.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(viewController, animated: true)
     }

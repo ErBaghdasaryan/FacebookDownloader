@@ -143,8 +143,8 @@ class OnboardingViewController: BaseViewController, UICollectionViewDelegate {
 
          nextButton.snp.makeConstraints { view in
             view.bottom.equalToSuperview().inset(80)
-            view.leading.equalToSuperview().offset(72)
-            view.trailing.equalToSuperview().inset(72)
+            view.leading.equalToSuperview().offset(30)
+            view.trailing.equalToSuperview().inset(30)
             view.height.equalTo(52)
         }
 
